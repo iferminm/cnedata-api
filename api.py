@@ -1,17 +1,10 @@
 #coding=utf-8
-import cherrypy
+from flask import Flask
+app = Flask(__name__)
 
-
-@cherrypy.popargs('name', 'year', 'object')
-class Eleccion(object):
-    def __init__(self):
-        self.centros = 'Centros acá'
-
-    @cherrypy.expose
-    def index(self, name, year):
-        return 'Eleccion %s de %s' % (name, year)
-
-
+@app.route('/')
+def hello():
+    return 'Hello World'
 
 if __name__ == '__main__':
-    cherrypy.quickstart(Eleccion())
+    app.run()
